@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "RLwfO8byVu/U9yDRgkN2lyZUc+sbaFyOs3dBE/u+iQtYq09GtetuYY7wvFk2TcULauaziEpf+iIj++ru8UElrw==",
+  "success": true,
+  "projectFilePath": "/home/remus/wpcore/wp-content/plugins/testing/src/App.fsproj",
+  "expectedPackageFiles": [
+    "/home/remus/.nuget/packages/fable.browser.blob/1.1.0/fable.browser.blob.1.1.0.nupkg.sha512",
+    "/home/remus/.nuget/packages/fable.browser.dom/1.1.0/fable.browser.dom.1.1.0.nupkg.sha512",
+    "/home/remus/.nuget/packages/fable.browser.event/1.0.0/fable.browser.event.1.0.0.nupkg.sha512",
+    "/home/remus/.nuget/packages/fable.browser.webstorage/1.0.0/fable.browser.webstorage.1.0.0.nupkg.sha512",
+    "/home/remus/.nuget/packages/fable.core/3.1.5/fable.core.3.1.5.nupkg.sha512",
+    "/home/remus/.nuget/packages/fable.elmish/3.0.0/fable.elmish.3.0.0.nupkg.sha512",
+    "/home/remus/.nuget/packages/fable.elmish.react/3.0.1/fable.elmish.react.3.0.1.nupkg.sha512",
+    "/home/remus/.nuget/packages/fable.react/5.1.0/fable.react.5.1.0.nupkg.sha512",
+    "/home/remus/.nuget/packages/fsharp.core/4.7.2/fsharp.core.4.7.2.nupkg.sha512",
+    "/home/remus/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/remus/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

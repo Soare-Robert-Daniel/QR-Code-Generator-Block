@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/remus/wpcore/wp-content/plugins/testing/src/App.fsproj": {}
+  },
+  "projects": {
+    "/home/remus/wpcore/wp-content/plugins/testing/src/App.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/remus/wpcore/wp-content/plugins/testing/src/App.fsproj",
+        "projectName": "App",
+        "projectPath": "/home/remus/wpcore/wp-content/plugins/testing/src/App.fsproj",
+        "packagesPath": "/home/remus/.nuget/packages/",
+        "outputPath": "/home/remus/wpcore/wp-content/plugins/testing/src/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/remus/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.7.2, )",
+              "generatePathProperty": true
+            },
+            "Fable.Browser.Dom": {
+              "target": "Package",
+              "version": "[1.1.0, )",
+              "generatePathProperty": true
+            },
+            "Fable.Core": {
+              "target": "Package",
+              "version": "[3.1.5, )",
+              "generatePathProperty": true
+            },
+            "Fable.Elmish.React": {
+              "target": "Package",
+              "version": "[3.0.1, )",
+              "generatePathProperty": true
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true,
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
