@@ -1,6 +1,6 @@
 {
 	"name": "soare-robert/qr-code-generator",
-	"title": "Testing",
+	"title": "QR Block Generator",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "A simple QR Code Generator.",

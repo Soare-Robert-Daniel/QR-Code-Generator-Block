@@ -38,8 +38,7 @@ registerBlockType( 'soare-robert/qr-code-generator', {
 	 * The block inserter will show this name.
 	 */
 	title: __(
-		'QR Code Generator',
-		'soare-robert'
+		'QR Code Generator'
 	),
 
 	/**
@@ -47,8 +46,7 @@ registerBlockType( 'soare-robert/qr-code-generator', {
 	 * It will be shown in the Block Tab in the Settings Sidebar.
 	 */
 	description: __(
-		'It generate a QR Code based on a giving text.',
-		'soare-robert'
+		'It generate a QR Code based on a giving text.'
 	),
 
 	/**
