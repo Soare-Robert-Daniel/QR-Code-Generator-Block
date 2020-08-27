@@ -7,6 +7,7 @@ open Browser
 open Fable.React.Props
 
  // IMPORTS
+
 type ButtonProps = 
     | IsPrimary of bool
     | IsSecondary of bool
@@ -40,7 +41,7 @@ let inline TextControl (props : TextControlProps list) (elems : ReactElement lis
     ofImport "TextControl" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
 
 
-let inline InspectorControls (props : unit) (elems : ReactElement list) : ReactElement =
+let inline InspectorControls (props : unit list) (elems : ReactElement list) : ReactElement =
     ofImport "InspectorControls" "@wordpress/block-editor" () elems    
 
 
@@ -95,6 +96,13 @@ type IQRCodeGenerator =
 let QrCode: IQRCodeGenerator = jsNative
 
 
+[<Emit("$0 === undefined")>]
+let isUndefined (x: 'a) : bool = jsNative
+
+[<Emit("undefined")>]
+let undefined : obj = jsNative
+
+
 let createQrCode (code: string) (size: int) (correctionLevel: string) = 
     let test = QrCode.qrcode(size, correctionLevel)
     test.addData(code, "Byte") |> ignore
@@ -113,9 +121,13 @@ type IAttributes =
 let view =
     FunctionComponent.Of(fun (props: {| attributes: IAttributes; setAttributes: (IAttributes -> unit) |}) ->
 
+    let editMode = Hooks.useState( isUndefined props.attributes.src )
+
+
+
     div []
         [
-            InspectorControls ()
+            InspectorControls [ ]
                 [
                     PanelBody [ Title "Setting" ]
                         [
@@ -125,7 +137,7 @@ let view =
                                 SelectControlProps.Help "Raising this level improves error correction capability but also increases the amount of data"
                                 SelectControlProps.Value props.attributes.correctionLevel
                                 SelectControlProps.Options [| 
-                                    {| label = "L (7%)"; value = "L"|} ;
+                                    {| label = "L (7%)" ; value = "L"|} ;
                                     {| label = "M (15%)"; value = "M"|} ;
                                     {| label = "Q (25%)"; value = "Q"|} ;
                                     {| label = "H (30%)"; value = "H"|} ;
@@ -135,24 +147,43 @@ let view =
                             RangeControl [ 
                                 RangeControlProps.Label "Size"; 
                                 RangeControlProps.Help "Set a custom size for the generated image";
-                                RangeControlProps.Min 2;
-                                RangeControlProps.Max 20;
+                                Min 2;
+                                Max 20;
                                 RangeControlProps.Value props.attributes.size
                                 RangeControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = (createQrCode props.attributes.text value props.attributes.correctionLevel); size = value; correctionLevel = props.attributes.correctionLevel |}))
                                 ] [ ]  
                         ]
                 ]
-            Placeholder [ Instructions "Paste a link/text to generate a QR Code" ;PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
-                [ 
-                    div [ ]
-                        [
-                            TextControl [ TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size props.attributes.correctionLevel); size = props.attributes.size; correctionLevel = props.attributes.correctionLevel|}))] []
-                        ]
-                    div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
-                        [
-                            img [ Src props.attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt props.attributes.text]
-                        ]
-                ]
-            ]
+           
+            if editMode.current then 
+                Placeholder [ Instructions "Paste a link/text to generate a QR Code" ;PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
+                    [ 
+                        div [ ]
+                            [
+                                TextControl [ TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size props.attributes.correctionLevel); size = props.attributes.size; correctionLevel = props.attributes.correctionLevel|}))] []
+                            ]
+                        
+                        div [ ]
+                            [
+                                div [ Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
+                                    [
+                                        img [ Src props.attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt props.attributes.text]
+                                    ]
+                            ]
+                        if not (isUndefined props.attributes.src) then
+                            div [  Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
+                                [
+                                    Button [ IsPrimary true; OnClick (fun _ -> editMode.update(fun _ -> false)) ]
+                                        [str "Looks Good"]
+                                ]
+                   
+                  
+                    ]
+            else 
+                div [ Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
+                    [
+                        img [ Src props.attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt props.attributes.text]
+                    ]
+        ]
     
     )
