@@ -15913,12 +15913,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../.fable/fable-library.2.11.0/Types.js */ "./.fable/fable-library.2.11.0/Types.js");
 /* harmony import */ var _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../.fable/fable-library.2.11.0/Reflection.js */ "./.fable/fable-library.2.11.0/Reflection.js");
 /* harmony import */ var _qrcode_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qrcode.js */ "./src/qrcode.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.11.0/List.js */ "./.fable/fable-library.2.11.0/List.js");
-/* harmony import */ var _fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../.fable/fable-library.2.11.0/Util.js */ "./.fable/fable-library.2.11.0/Util.js");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../.fable/fable-library.2.11.0/List.js */ "./.fable/fable-library.2.11.0/List.js");
+/* harmony import */ var _fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../.fable/fable-library.2.11.0/Util.js */ "./.fable/fable-library.2.11.0/Util.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/Fable.React.5.1.0/Fable.React.Props.fs */ "./.fable/Fable.React.5.1.0/Fable.React.Props.fs");
 /* harmony import */ var _fable_Fable_React_5_1_0_Fable_React_FunctionComponent_fs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/Fable.React.5.1.0/Fable.React.FunctionComponent.fs */ "./.fable/Fable.React.5.1.0/Fable.React.FunctionComponent.fs");
 
@@ -15966,17 +15966,44 @@ function createQrCode(code) {
 }
 const view = Object(_fable_Fable_React_5_1_0_Fable_React_FunctionComponent_fs__WEBPACK_IMPORTED_MODULE_9__["FunctionComponent$$$Of$$2F363EB5"])(function (props) {
   var props$$3, children$$1, props$$1, elems, props$$2, children, props$$7, css, children$$3, props$$5, css$$1;
-  const text = react__WEBPACK_IMPORTED_MODULE_4__["useState"]("");
-  const props$$9 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_5__["ofArray"])([new PlaceholderProps(0, "Label", "QR Code Generator"), new PlaceholderProps(3, "IsColumnLayout", true)]);
-  const elems$$1 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_5__["ofArray"])([(props$$3 = [], (children$$1 = [(props$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new TextControlProps(3, "OnChange", function (value$$2) {
-    text[1](function (_arg1) {
-      return value$$2;
-    });
-  }), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), (elems = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), (props$$2 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["createObj"])(props$$1, 1), (children = elems, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["TextControl"], props$$2, ...children)))))], react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["createObj"])(props$$3, 1), ...children$$1))), (props$$7 = [(css = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_5__["ofArray"])([new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](125, "Display", "flex"), new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](200, "JustifyContent", "center")]), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["createObj"])(css, 1)])], (children$$3 = [(props$$5 = [new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["HTMLAttr"](109, "Src", createQrCode(text[0])), (css$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](394, "Width", "max-content"), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["createObj"])(css$$1, 1)])], react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("img", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["createObj"])(props$$5, 1), ...[]))], react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["createObj"])(props$$7, 1), ...children$$3)))]);
-  const props$$10 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_6__["createObj"])(props$$9, 1);
+  const props$$9 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new PlaceholderProps(0, "Label", "QR Code Generator"), new PlaceholderProps(3, "IsColumnLayout", true)]);
+  const elems$$1 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([(props$$3 = [], (children$$1 = [(props$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new TextControlProps(3, "OnChange", function (value$$2) {
+    var src;
+    props.setAttributes((src = createQrCode(value$$2), Object(_fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["anonRecord"])({
+      size: props.attributes.size,
+      src: src,
+      text: value$$2
+    })));
+  }), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), (elems = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), (props$$2 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$1, 1), (children = elems, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], props$$2, ...children)))))], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$3, 1), ...children$$1))), (props$$7 = [(css = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](125, "Display", "flex"), new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](200, "JustifyContent", "center")]), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(css, 1)])], (children$$3 = [(props$$5 = [new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["HTMLAttr"](109, "Src", props.attributes.src), (css$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](394, "Width", "max-content"), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(css$$1, 1)])], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("img", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$5, 1), ...[]))], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$7, 1), ...children$$3)))]);
+  const props$$10 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$9, 1);
   const children$$5 = elems$$1;
-  return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["Placeholder"], props$$10, ...children$$5);
+  return react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Placeholder"], props$$10, ...children$$5);
 });
+
+/***/ }),
+
+/***/ "./src/attributes.js":
+/*!***************************!*\
+  !*** ./src/attributes.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var attributes = {
+  text: {
+    type: 'string'
+  },
+  src: {
+    type: 'string'
+  },
+  size: {
+    type: 'number',
+    default: 0
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (attributes);
 
 /***/ }),
 
@@ -16027,11 +16054,11 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 function Edit(_ref) {
-  var className = _ref.className;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-    className: className
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Testing – hello from the editor!', 'create-block'), Object(_App_fs__WEBPACK_IMPORTED_MODULE_3__["view"])({
-    initCount: 0
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_App_fs__WEBPACK_IMPORTED_MODULE_3__["view"])({
+    attributes: attributes,
+    setAttributes: setAttributes
   }));
 }
 
@@ -16065,6 +16092,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _attributes_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes.js */ "./src/attributes.js");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -16090,6 +16118,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -16131,6 +16160,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('soa
     // Removes support for an HTML mode.
     html: false
   },
+  attributes: _attributes_js__WEBPACK_IMPORTED_MODULE_5__["default"],
 
   /**
    * @see ./edit.js

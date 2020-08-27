@@ -26,7 +26,7 @@ import './style.scss';
  */
 import Edit from './edit';
 import save from './save';
-
+import attributes from './attributes.js';
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -70,7 +70,7 @@ registerBlockType( 'soare-robert/qr-code-generator', {
 		// Removes support for an HTML mode.
 		html: false,
 	},
-
+	attributes,
 	/**
 	 * @see ./edit.js
 	 */

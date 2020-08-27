@@ -57,21 +57,28 @@ let createQrCode (code: string) =
     test.addData(code, "Byte") |> ignore
     test.make() |> ignore
     test.createDataURL()
+    
+    
+type IAttributes = 
+    {|
+        text: string
+        src: string
+        size: int
+    |}
 
 let view =
-    FunctionComponent.Of(fun (props: {| initCount: int |}) ->
-    let text = Hooks.useState("") // This is where the magic happens
+    FunctionComponent.Of(fun (props: {| attributes: IAttributes; setAttributes: (IAttributes -> unit) |}) ->
 
     Placeholder [ PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
         [ 
             div [ ]
                 [
-                    TextControl [ OnChange (fun value -> text.update( fun _ -> value))] []
+                    TextControl [ OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
                
                 ]
             div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
                 [
-                    img [ Src (createQrCode text.current); Style [  Width "max-content" ]]
+                    img [ Src props.attributes.src; Style [  Width "max-content" ]]
                 ]
                 
         ]

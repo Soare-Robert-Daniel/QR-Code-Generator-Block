@@ -26,11 +26,10 @@ import { view } from './App.fs'
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit( { className } ) {
+export default function Edit( { attributes, setAttributes } ) {
 	return (
-		<p className={ className }>
-			{ __( 'Testing – hello from the editor!', 'create-block' ) }
-			{ view({ initCount: 0}) }
-		</p>
+		<div>
+			{ view({ attributes, setAttributes }) }
+		</div>
 	);
 }
