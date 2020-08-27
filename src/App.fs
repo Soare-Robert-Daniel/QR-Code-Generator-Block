@@ -1,7 +1,5 @@
 module App
 
-open System
-open System.Text
 open Fable.Core
 open Fable.React
 open Fable.Core.JsInterop
@@ -20,6 +18,10 @@ let inline Button (props : ButtonProps list) (elems : ReactElement list) : React
 
 type PlaceholderProps = 
     | Label of string
+    | ClassName of string
+    | Instructions of string
+    | IsColumnLayout of bool
+
 
 let inline Placeholder (props : PlaceholderProps list) (elems : ReactElement list) : ReactElement =
     ofImport "Placeholder" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
@@ -58,17 +60,19 @@ let createQrCode (code: string) =
 
 let view =
     FunctionComponent.Of(fun (props: {| initCount: int |}) ->
-    let state = Hooks.useState(props.initCount) // This is where the magic happens
     let text = Hooks.useState("") // This is where the magic happens
 
-    Placeholder [ PlaceholderProps.Label "QR Code Generator"]
+    Placeholder [ PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
         [ 
-            TextControl [ Label "Code"; OnChange (fun value -> text.update( fun _ -> value))] []
-            Button
-                [ IsPrimary true; OnClick (fun _ -> state.update(fun s -> s + 1)) ]
-                [ str "Times clicked: "; ofInt state.current ]
-            
-            img [ Src (createQrCode text.current) ]
+            div [ ]
+                [
+                    TextControl [ OnChange (fun value -> text.update( fun _ -> value))] []
+               
+                ]
+            div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
+                [
+                    img [ Src (createQrCode text.current); Style [  Width "max-content" ]]
+                ]
                 
         ]
     )
