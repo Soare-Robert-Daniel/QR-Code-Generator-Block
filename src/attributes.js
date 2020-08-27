@@ -8,6 +8,10 @@ const attributes = {
     size: {
         type: 'number',
         default: 10
+    },
+    correctionLevel: {
+        type: 'string',
+        default: 'L'
     }
 };
 

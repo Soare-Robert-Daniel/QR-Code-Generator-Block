@@ -63,6 +63,21 @@ type RangeControlProps =
 let inline RangeControl (props : RangeControlProps list) (elems : ReactElement list) : ReactElement =
     ofImport "RangeControl" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
 
+type SelectOption = 
+    {| 
+        label: string
+        value: string 
+    |}
+
+type SelectControlProps = 
+    | Label of string
+    | Help of string
+    | Value of string
+    | Options of SelectOption array
+    | OnChange of (string -> unit)
+
+let inline SelectControl (props : SelectControlProps list) (elems : ReactElement list) : ReactElement =
+    ofImport "SelectControl" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
 
 // // QR Code
 type IQRCode = 
@@ -80,8 +95,8 @@ type IQRCodeGenerator =
 let QrCode: IQRCodeGenerator = jsNative
 
 
-let createQrCode (code: string) (size: int) = 
-    let test = QrCode.qrcode(size, "H")
+let createQrCode (code: string) (size: int) (correctionLevel: string) = 
+    let test = QrCode.qrcode(size, correctionLevel)
     test.addData(code, "Byte") |> ignore
     test.make() |> ignore
     test.createDataURL 4 
@@ -92,6 +107,7 @@ type IAttributes =
         text: string
         src: string
         size: int
+        correctionLevel: string
     |}
 
 let view =
@@ -103,14 +119,26 @@ let view =
                 [
                     PanelBody [ Title "Setting" ]
                         [
-                            TextControl [ TextControlProps.Label "Text"; TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size); size = props.attributes.size|}))] []
+                            TextControl [ TextControlProps.Label "Text"; TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size props.attributes.correctionLevel); size = props.attributes.size; correctionLevel = props.attributes.correctionLevel|}))] []
+                            SelectControl [ 
+                                SelectControlProps.Label "Error Correction Level"
+                                SelectControlProps.Help "Raising this level improves error correction capability but also increases the amount of data"
+                                SelectControlProps.Value props.attributes.correctionLevel
+                                SelectControlProps.Options [| 
+                                    {| label = "L (7%)"; value = "L"|} ;
+                                    {| label = "M (15%)"; value = "M"|} ;
+                                    {| label = "Q (25%)"; value = "Q"|} ;
+                                    {| label = "H (30%)"; value = "H"|} ;
+                                |]
+                                SelectControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = (createQrCode props.attributes.text props.attributes.size value); size = props.attributes.size; correctionLevel = value |})) 
+                            ] [ ]
                             RangeControl [ 
                                 RangeControlProps.Label "Size"; 
-                                RangeControlProps.Help "Set a custom size for the image generated";
+                                RangeControlProps.Help "Set a custom size for the generated image";
                                 RangeControlProps.Min 2;
                                 RangeControlProps.Max 20;
                                 RangeControlProps.Value props.attributes.size
-                                RangeControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = (createQrCode props.attributes.text value); size = value |}))
+                                RangeControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = (createQrCode props.attributes.text value props.attributes.correctionLevel); size = value; correctionLevel = props.attributes.correctionLevel |}))
                                 ] [ ]  
                         ]
                 ]
@@ -118,7 +146,7 @@ let view =
                 [ 
                     div [ ]
                         [
-                            TextControl [ TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size); size = props.attributes.size|}))] []
+                            TextControl [ TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size props.attributes.correctionLevel); size = props.attributes.size; correctionLevel = props.attributes.correctionLevel|}))] []
                         ]
                     div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
                         [
