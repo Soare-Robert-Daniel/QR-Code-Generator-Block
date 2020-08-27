@@ -15896,7 +15896,7 @@ module.exports = function(originalModule) {
 /*!********************!*\
   !*** ./src/App.fs ***!
   \********************/
-/*! exports provided: ButtonProps, ButtonProps$reflection, PlaceholderProps, PlaceholderProps$reflection, TextControlProps, TextControlProps$reflection, createQrCode, view */
+/*! exports provided: ButtonProps, ButtonProps$reflection, PlaceholderProps, PlaceholderProps$reflection, TextControlProps, TextControlProps$reflection, PanelBodyProps, PanelBodyProps$reflection, RangeControlProps, RangeControlProps$reflection, createQrCode, view */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15907,6 +15907,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlaceholderProps$reflection", function() { return PlaceholderProps$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextControlProps", function() { return TextControlProps; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextControlProps$reflection", function() { return TextControlProps$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelBodyProps", function() { return PanelBodyProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelBodyProps$reflection", function() { return PanelBodyProps$reflection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RangeControlProps", function() { return RangeControlProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RangeControlProps$reflection", function() { return RangeControlProps$reflection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createQrCode", function() { return createQrCode; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "view", function() { return view; });
 /* harmony import */ var _fable_fable_library_2_11_0_Option_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../.fable/fable-library.2.11.0/Option.js */ "./.fable/fable-library.2.11.0/Option.js");
@@ -15919,8 +15923,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../.fable/Fable.React.5.1.0/Fable.React.Props.fs */ "./.fable/Fable.React.5.1.0/Fable.React.Props.fs");
-/* harmony import */ var _fable_Fable_React_5_1_0_Fable_React_FunctionComponent_fs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/Fable.React.5.1.0/Fable.React.FunctionComponent.fs */ "./.fable/Fable.React.5.1.0/Fable.React.FunctionComponent.fs");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../.fable/Fable.React.5.1.0/Fable.React.Props.fs */ "./.fable/Fable.React.5.1.0/Fable.React.Props.fs");
+/* harmony import */ var _fable_Fable_React_5_1_0_Fable_React_FunctionComponent_fs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../.fable/Fable.React.5.1.0/Fable.React.FunctionComponent.fs */ "./.fable/Fable.React.5.1.0/Fable.React.FunctionComponent.fs");
+
 
 
 
@@ -15956,6 +15963,22 @@ const TextControlProps = Object(_fable_fable_library_2_11_0_Types_js__WEBPACK_IM
 function TextControlProps$reflection() {
   return Object(_fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["union_type"])("App.TextControlProps", [], TextControlProps, () => [["Label", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["string_type"]]]], ["Type", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["string_type"]]]], ["Value", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["string_type"]]]], ["OnChange", [["Item", Object(_fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["lambda_type"])(_fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["string_type"], _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["unit_type"])]]]]);
 }
+const PanelBodyProps = Object(_fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function App_PanelBodyProps(tag, name, ...fields) {
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
+}, _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["Union"]);
+function PanelBodyProps$reflection() {
+  return Object(_fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["union_type"])("App.PanelBodyProps", [], PanelBodyProps, () => [["Title", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["string_type"]]]], ["InitialOpen", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["bool_type"]]]]]);
+}
+const RangeControlProps = Object(_fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["declare"])(function App_RangeControlProps(tag, name, ...fields) {
+  this.tag = tag | 0;
+  this.name = name;
+  this.fields = fields;
+}, _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["Union"]);
+function RangeControlProps$reflection() {
+  return Object(_fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["union_type"])("App.RangeControlProps", [], RangeControlProps, () => [["Label", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["string_type"]]]], ["Help", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["string_type"]]]], ["Value", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["int32_type"]]]], ["Min", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["int32_type"]]]], ["Max", [["Item", _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["int32_type"]]]], ["OnChange", [["Item", Object(_fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["lambda_type"])(_fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["int32_type"], _fable_fable_library_2_11_0_Reflection_js__WEBPACK_IMPORTED_MODULE_2__["unit_type"])]]]]);
+}
 function createQrCode(code) {
   const test = _qrcode_js__WEBPACK_IMPORTED_MODULE_3__["qrcode"](10, "L");
   const value = test.addData(code, "Byte");
@@ -15964,20 +15987,31 @@ function createQrCode(code) {
   void null;
   return test.createDataURL();
 }
-const view = Object(_fable_Fable_React_5_1_0_Fable_React_FunctionComponent_fs__WEBPACK_IMPORTED_MODULE_9__["FunctionComponent$$$Of$$2F363EB5"])(function (props) {
-  var props$$3, children$$1, props$$1, elems, props$$2, children, props$$7, css, children$$3, props$$5, css$$1;
-  const props$$9 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new PlaceholderProps(0, "Label", "QR Code Generator"), new PlaceholderProps(3, "IsColumnLayout", true)]);
-  const elems$$1 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([(props$$3 = [], (children$$1 = [(props$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new TextControlProps(3, "OnChange", function (value$$2) {
+const view = Object(_fable_Fable_React_5_1_0_Fable_React_FunctionComponent_fs__WEBPACK_IMPORTED_MODULE_10__["FunctionComponent$$$Of$$2F363EB5"])(function (props) {
+  var elems$$3, props$$5, elems$$2, props$$1, elems, props$$2, children, props$$3, elems$$1, props$$4, children$$1, props$$6, children$$2, children$$3, props$$17, elems$$5, props$$11, children$$5, props$$9, elems$$4, props$$10, children$$4, props$$15, css, children$$7, props$$13, css$$1, props$$18, children$$9;
+  const props$$19 = [];
+  const children$$10 = [(elems$$3 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]((props$$5 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new PanelBodyProps(0, "Title", "Setting"), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), (elems$$2 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([(props$$1 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new TextControlProps(0, "Label", "Text"), new TextControlProps(3, "OnChange", function (value$$2) {
     var src;
     props.setAttributes((src = createQrCode(value$$2), Object(_fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["anonRecord"])({
       size: props.attributes.size,
       src: src,
       text: value$$2
     })));
-  }), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), (elems = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), (props$$2 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$1, 1), (children = elems, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], props$$2, ...children)))))], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$3, 1), ...children$$1))), (props$$7 = [(css = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](125, "Display", "flex"), new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](200, "JustifyContent", "center")]), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(css, 1)])], (children$$3 = [(props$$5 = [new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["HTMLAttr"](109, "Src", props.attributes.src), (css$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_8__["CSSProp"](394, "Width", "max-content"), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(css$$1, 1)])], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("img", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$5, 1), ...[]))], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$7, 1), ...children$$3)))]);
-  const props$$10 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$9, 1);
-  const children$$5 = elems$$1;
-  return react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Placeholder"], props$$10, ...children$$5);
+  })]), (elems = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), (props$$2 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$1, 1), (children = elems, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], props$$2, ...children))))), (props$$3 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new RangeControlProps(0, "Label", "Custom Size"), new RangeControlProps(1, "Help", "Set a custom size for the image generated"), new RangeControlProps(3, "Min", 50), new RangeControlProps(4, "Max", 200), new RangeControlProps(5, "OnChange", function (value$$3) {
+    props.setAttributes(Object(_fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["anonRecord"])({
+      size: value$$3,
+      src: props.attributes.src,
+      text: props.attributes.text
+    }));
+  })]), (elems$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), (props$$4 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$3, 1), (children$$1 = elems$$1, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["RangeControl"], props$$4, ...children$$1)))))]), (props$$6 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$5, 1), (children$$2 = elems$$2, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["PanelBody"], props$$6, ...children$$2))))), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), (children$$3 = elems$$3, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__["InspectorControls"], void null, ...children$$3))), (props$$17 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new PlaceholderProps(2, "Instructions", "Paste a link/text to generate a QR Code"), new PlaceholderProps(0, "Label", "QR Code Generator"), new PlaceholderProps(3, "IsColumnLayout", true)]), (elems$$5 = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([(props$$11 = [], (children$$5 = [(props$$9 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new TextControlProps(3, "OnChange", function (value$$4) {
+    var src$$2;
+    props.setAttributes((src$$2 = createQrCode(value$$4), Object(_fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["anonRecord"])({
+      size: props.attributes.size,
+      src: src$$2,
+      text: value$$4
+    })));
+  }), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), (elems$$4 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](), (props$$10 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$9, 1), (children$$4 = elems$$4, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["TextControl"], props$$10, ...children$$4)))))], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$11, 1), ...children$$5))), (props$$15 = [(css = Object(_fable_fable_library_2_11_0_List_js__WEBPACK_IMPORTED_MODULE_4__["ofArray"])([new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_9__["CSSProp"](125, "Display", "flex"), new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_9__["CSSProp"](200, "JustifyContent", "center")]), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(css, 1)])], (children$$7 = [(props$$13 = [new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_9__["HTMLAttr"](109, "Src", props.attributes.src), (css$$1 = new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"](new _fable_Fable_React_5_1_0_Fable_React_Props_fs__WEBPACK_IMPORTED_MODULE_9__["CSSProp"](394, "Width", "max-content"), new _fable_fable_library_2_11_0_Types_js__WEBPACK_IMPORTED_MODULE_1__["List"]()), ["style", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(css$$1, 1)])], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("img", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$13, 1), ...[]))], react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$15, 1), ...children$$7)))]), (props$$18 = Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$17, 1), (children$$9 = elems$$5, react__WEBPACK_IMPORTED_MODULE_7__["createElement"](_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Placeholder"], props$$18, ...children$$9)))))];
+  return react__WEBPACK_IMPORTED_MODULE_7__["createElement"]("div", Object(_fable_fable_library_2_11_0_Util_js__WEBPACK_IMPORTED_MODULE_5__["createObj"])(props$$19, 1), ...children$$10);
 });
 
 /***/ }),
@@ -18216,6 +18250,17 @@ __webpack_require__.r(__webpack_exports__);
 function save() {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Testing – hello from the saved content!', 'create-block'));
 }
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!**********************************************!*\
+  !*** external {"this":["wp","blockEditor"]} ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blockEditor"]; }());
 
 /***/ }),
 

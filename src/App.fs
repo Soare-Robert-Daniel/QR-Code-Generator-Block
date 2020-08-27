@@ -36,7 +36,40 @@ type TextControlProps =
 let inline TextControl (props : TextControlProps list) (elems : ReactElement list) : ReactElement =
     ofImport "TextControl" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
 
-// QR Code
+
+let inline InspectorControls (props : unit) (elems : ReactElement list) : ReactElement =
+    ofImport "InspectorControls" "@wordpress/block-editor" () elems    
+
+
+type PanelBodyProps = 
+    | Title of string
+    | InitialOpen of bool
+
+let inline PanelBody (props : PanelBodyProps list) (elems : ReactElement list) : ReactElement =
+    ofImport "PanelBody" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
+
+// <RangeControl
+// 						label={ __( 'Percentage' ) }
+// 						help={ __( 'The value of the progress bar.' ) }
+// 						value={ attributes.percentage }
+// 						onChange={ onPrcentageChange }
+// 						min={ 0 }
+// 						max={ 100 }
+// 					/>
+
+type RangeControlProps = 
+    | Label of string
+    | Help of string
+    | Value of int
+    | Min of int
+    | Max of int
+    | OnChange of (int -> unit)
+
+let inline RangeControl (props : RangeControlProps list) (elems : ReactElement list) : ReactElement =
+    ofImport "RangeControl" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
+
+
+// // QR Code
 type IQRCode = 
     abstract addData: string * string -> unit
     abstract make: unit -> unit
@@ -58,7 +91,7 @@ let createQrCode (code: string) =
     test.make() |> ignore
     test.createDataURL()
     
-    
+
 type IAttributes = 
     {|
         text: string
@@ -69,17 +102,33 @@ type IAttributes =
 let view =
     FunctionComponent.Of(fun (props: {| attributes: IAttributes; setAttributes: (IAttributes -> unit) |}) ->
 
-    Placeholder [ PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
-        [ 
-            div [ ]
+    div []
+        [
+            InspectorControls ()
                 [
-                    TextControl [ OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
-               
+                    PanelBody [ Title "Setting" ]
+                        [
+                            TextControl [ TextControlProps.Label "Text"; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
+                            RangeControl [ 
+                                RangeControlProps.Label "Custom Size"; 
+                                RangeControlProps.Help "Set a custom size for the image generated";
+                                RangeControlProps.Min 50;
+                                RangeControlProps.Max 200;
+                                RangeControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = props.attributes.src; size = value |}))
+                                ] []
+                        ]
                 ]
-            div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
-                [
-                    img [ Src props.attributes.src; Style [  Width "max-content" ]]
+            Placeholder [ Instructions "Paste a link/text to generate a QR Code" ;PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
+                [ 
+                    div [ ]
+                        [
+                            TextControl [ TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
+                        ]
+                    div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
+                        [
+                            img [ Src props.attributes.src; Style [  Width "max-content" ]]
+                        ]
                 ]
-                
-        ]
+            ]
+    
     )
