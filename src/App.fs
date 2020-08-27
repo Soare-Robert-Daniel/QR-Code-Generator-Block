@@ -6,7 +6,6 @@ open Fable.Core.JsInterop
 open Browser
 open Fable.React.Props
 
-console.log("Fable is up and running...")
  // IMPORTS
 type ButtonProps = 
     | IsPrimary of bool
@@ -52,6 +51,7 @@ type PanelBodyProps =
 let inline PanelBody (props : PanelBodyProps list) (elems : ReactElement list) : ReactElement =
     ofImport "PanelBody" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
 
+
 type RangeControlProps = 
     | Label of string
     | Help of string
@@ -70,7 +70,7 @@ type IQRCode =
     abstract make: unit -> unit
     abstract createImgTag: unit -> string
     abstract createASCII: unit -> string
-    abstract createDataURL: unit -> string
+    abstract createDataURL: int -> string
 
 
 type IQRCodeGenerator = 
@@ -80,15 +80,12 @@ type IQRCodeGenerator =
 let QrCode: IQRCodeGenerator = jsNative
 
 
-let createQrCode (code: string) = 
-    let test = QrCode.qrcode(10, "H")
+let createQrCode (code: string) (size: int) = 
+    let test = QrCode.qrcode(size, "H")
     test.addData(code, "Byte") |> ignore
     test.make() |> ignore
-    test.createDataURL()
+    test.createDataURL 4 
     
-let getImgSize (size: int): CSSProp list =
-    if size = 0 then [ Width "max-content"; Height  "max-content" ]
-    else [ Width (sprintf "%dpx" size); Height  (sprintf "%dpx" size) ]
 
 type IAttributes = 
     {|
@@ -106,32 +103,26 @@ let view =
                 [
                     PanelBody [ Title "Setting" ]
                         [
-                            TextControl [ TextControlProps.Label "Text"; TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
+                            TextControl [ TextControlProps.Label "Text"; TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size); size = props.attributes.size|}))] []
                             RangeControl [ 
-                                RangeControlProps.Label "Custom Size"; 
+                                RangeControlProps.Label "Size"; 
                                 RangeControlProps.Help "Set a custom size for the image generated";
-                                RangeControlProps.Min 50;
-                                RangeControlProps.Max 350;
+                                RangeControlProps.Min 2;
+                                RangeControlProps.Max 20;
                                 RangeControlProps.Value props.attributes.size
-                                RangeControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = props.attributes.src; size = value |}))
-                                ] [ ]
-
-                            div [ Style [ Display DisplayOptions.Flex; JustifyContent "flex-end" ] ]
-                                [
-                                    Button [IsSecondary true; IsSmall true; ButtonProps.OnClick (fun _ -> props.setAttributes({| text = props.attributes.text; src = props.attributes.src; size = 0 |})) ] [ str "Reset Size"]
-                                ]
-                                
+                                RangeControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = (createQrCode props.attributes.text value); size = value |}))
+                                ] [ ]  
                         ]
                 ]
             Placeholder [ Instructions "Paste a link/text to generate a QR Code" ;PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
                 [ 
                     div [ ]
                         [
-                            TextControl [ TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
+                            TextControl [ TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value props.attributes.size); size = props.attributes.size|}))] []
                         ]
                     div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
                         [
-                            img [ Src props.attributes.src; Style (getImgSize props.attributes.size)]
+                            img [ Src props.attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt props.attributes.text]
                         ]
                 ]
             ]

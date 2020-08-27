@@ -7,7 +7,7 @@ const attributes = {
     },
     size: {
         type: 'number',
-        default: 0
+        default: 10
     }
 };
 

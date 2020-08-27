@@ -14,13 +14,10 @@ import { __ } from '@wordpress/i18n';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
 	return (
-		<p>
-			{ __(
-				'Testing – hello from the saved content!',
-				'create-block'
-			) }
-		</p>
+		<div style={{ display: 'flex', justifyContent: 'center' }}>
+			<img src={ attributes.src } style={{ width: 'max-content', height: 'max-content' }}/>
+		</div>
 	);
 }
