@@ -10,7 +10,11 @@ console.log("Fable is up and running...")
  // IMPORTS
 type ButtonProps = 
     | IsPrimary of bool
+    | IsSecondary of bool
+    | IsLink of bool
+    | IsSmall of bool
     | OnClick of (Types.MouseEvent -> unit)
+    | ClassName of CSSProp list
 
 let inline Button (props : ButtonProps list) (elems : ReactElement list) : ReactElement =
     ofImport "Button" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems
@@ -48,15 +52,6 @@ type PanelBodyProps =
 let inline PanelBody (props : PanelBodyProps list) (elems : ReactElement list) : ReactElement =
     ofImport "PanelBody" "@wordpress/components" (keyValueList CaseRules.LowerFirst props) elems    
 
-// <RangeControl
-// 						label={ __( 'Percentage' ) }
-// 						help={ __( 'The value of the progress bar.' ) }
-// 						value={ attributes.percentage }
-// 						onChange={ onPrcentageChange }
-// 						min={ 0 }
-// 						max={ 100 }
-// 					/>
-
 type RangeControlProps = 
     | Label of string
     | Help of string
@@ -86,11 +81,14 @@ let QrCode: IQRCodeGenerator = jsNative
 
 
 let createQrCode (code: string) = 
-    let test = QrCode.qrcode(10, "L")
+    let test = QrCode.qrcode(10, "H")
     test.addData(code, "Byte") |> ignore
     test.make() |> ignore
     test.createDataURL()
     
+let getImgSize (size: int): CSSProp list =
+    if size = 0 then [ Width "max-content"; Height  "max-content" ]
+    else [ Width (sprintf "%dpx" size); Height  (sprintf "%dpx" size) ]
 
 type IAttributes = 
     {|
@@ -108,25 +106,32 @@ let view =
                 [
                     PanelBody [ Title "Setting" ]
                         [
-                            TextControl [ TextControlProps.Label "Text"; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
+                            TextControl [ TextControlProps.Label "Text"; TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
                             RangeControl [ 
                                 RangeControlProps.Label "Custom Size"; 
                                 RangeControlProps.Help "Set a custom size for the image generated";
                                 RangeControlProps.Min 50;
-                                RangeControlProps.Max 200;
+                                RangeControlProps.Max 350;
+                                RangeControlProps.Value props.attributes.size
                                 RangeControlProps.OnChange (fun value -> props.setAttributes({| text = props.attributes.text; src = props.attributes.src; size = value |}))
-                                ] []
+                                ] [ ]
+
+                            div [ Style [ Display DisplayOptions.Flex; JustifyContent "flex-end" ] ]
+                                [
+                                    Button [IsSecondary true; IsSmall true; ButtonProps.OnClick (fun _ -> props.setAttributes({| text = props.attributes.text; src = props.attributes.src; size = 0 |})) ] [ str "Reset Size"]
+                                ]
+                                
                         ]
                 ]
             Placeholder [ Instructions "Paste a link/text to generate a QR Code" ;PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
                 [ 
                     div [ ]
                         [
-                            TextControl [ TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
+                            TextControl [ TextControlProps.Value props.attributes.text; TextControlProps.OnChange (fun value -> props.setAttributes({| text = value; src = (createQrCode value); size = props.attributes.size|}))] []
                         ]
                     div [ Style [ Display DisplayOptions.Flex; JustifyContent "center" ] ]
                         [
-                            img [ Src props.attributes.src; Style [  Width "max-content" ]]
+                            img [ Src props.attributes.src; Style (getImgSize props.attributes.size)]
                         ]
                 ]
             ]
