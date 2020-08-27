@@ -1,10 +1,10 @@
 {
-	"name": "create-block/testing",
+	"name": "soare-robert/qr-code-generator",
 	"title": "Testing",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
-	"textdomain": "create-block",
+	"description": "A simple QR Code Generator.",
+	"textdomain": "soare-robert",
 	"supports": {
 		"html": false
 	},

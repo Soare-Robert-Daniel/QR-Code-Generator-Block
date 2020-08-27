@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: QR Code Generator
-Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
+Plugin URI: https://github.com/Soare-Robert-Daniel/QR-Code-Generator-Block
 Description: It generate a QR Code based on a giving text.
-Version: 0.1.0
+Version: 1.0.0
 Author: Soare Robert Daniel 
 Author URI: https://profiles.wordpress.org/soarerobertdaniel7/
 License: GNU GPLv3 
