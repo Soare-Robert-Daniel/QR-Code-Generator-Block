@@ -17,7 +17,7 @@ The word "QR Code" is registered trademark of [DENSO WAVE INCORPORATED](http://w
 
 ![editor](assets/editor_qr_code.png)
 
-![editor](assets/save_qr_code.png)
+![save](assets/save_qr_code.png)
 
 
 ## Block Installation
