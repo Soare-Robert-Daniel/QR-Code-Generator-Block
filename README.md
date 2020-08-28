@@ -17,12 +17,12 @@ The word "QR Code" is registered trademark of [DENSO WAVE INCORPORATED](http://w
 
 ![editor](assets/editor_qr_code.png)
 
-![editor](assets/save_qr_code.png)
+![save](assets/save_qr_code.png)
 
 
 ## Block Installation
 
-1. Upload the plugin files to the `/wp-content/plugins/qr-code-generator-block` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/simple-qr-code-generator-block` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 ## Changelog
