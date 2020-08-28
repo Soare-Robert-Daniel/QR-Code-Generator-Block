@@ -19,5 +19,8 @@ The word "QR Code" is registered trademark of [DENSO WAVE INCORPORATED](http://w
 
 ## Changelog
 
+### 1.1.0
+- Add Translation
+
 ### Version 1.0.0 
 - Release

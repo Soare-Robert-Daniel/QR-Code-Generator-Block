@@ -89,19 +89,21 @@ type IQRCode =
     abstract createASCII: unit -> string
     abstract createDataURL: int -> string
 
-
 type IQRCodeGenerator = 
     abstract qrcode: int * string -> IQRCode
+
 
 [<ImportAll("./qrcode.js")>]
 let QrCode: IQRCodeGenerator = jsNative
 
 let createQrCode (code: string) (size: int) (correctionLevel: string)  = 
     let test = QrCode.qrcode(0, correctionLevel)
-    test.addData(code, "Byte") |> ignore
-    test.make() |> ignore
+    test.addData(code, "Byte")
+    test.make()
     test.createDataURL size
-    
+
+[<Import("__", from="@wordpress/i18n")>]
+let __(s : string): string = jsNative
 
 (* --------------------------------- Helpers --------------------------------- *)
 [<Emit("$0 === undefined")>]
@@ -121,85 +123,86 @@ type IAttributes =
     |}
 
 let view =
-    FunctionComponent.Of((fun (props: {| attributes: IAttributes; setAttributes: (IAttributes -> unit) |}) ->
+    FunctionComponent.Of(
+        (fun (props: {| attributes: IAttributes; setAttributes: (IAttributes -> unit) |}) ->
 
-    let editMode = Hooks.useState( isUndefined props.attributes.src )
+            let editMode = Hooks.useState( isUndefined props.attributes.src )
 
-    let attributes = props.attributes
-    let setAttributes = props.setAttributes
+            let attributes = props.attributes
+            let setAttributes = props.setAttributes
 
-    let generate (value: IGenerate) =
-        match value with 
-        | Code(x) -> (createQrCode x attributes.size attributes.correctionLevel) 
-        | Size(x) -> (createQrCode attributes.text x attributes.correctionLevel) 
-        | CorrectionLevel(x) -> (createQrCode attributes.text attributes.size x )
+            let generate (value: IGenerate) =
+                match value with 
+                | Code(x) -> (createQrCode x attributes.size attributes.correctionLevel) 
+                | Size(x) -> (createQrCode attributes.text x attributes.correctionLevel) 
+                | CorrectionLevel(x) -> (createQrCode attributes.text attributes.size x )
 
-    div []
-        [
-            InspectorControls [ ]
+            div []
                 [
-                    PanelBody [ Title "Setting" ]
+                    InspectorControls [ ]
                         [
-                            TextControl [ 
-                                TextControlProps.Label "Text"; 
-                                TextControlProps.Value attributes.text; 
-                                TextControlProps.OnChange (fun value -> setAttributes({| attributes with text = value; src = (generate (Code value)) |}))
-                                ] []
-                            SelectControl [ 
-                                SelectControlProps.Label "Error Correction Level"
-                                SelectControlProps.Help "Raising this level improves error correction capability but also increases the amount of data"
-                                SelectControlProps.Value attributes.correctionLevel
-                                SelectControlProps.Options [| 
-                                    {| label = "L (7%)" ; value = "L"|} ;
-                                    {| label = "M (15%)"; value = "M"|} ;
-                                    {| label = "Q (25%)"; value = "Q"|} ;
-                                    {| label = "H (30%)"; value = "H"|} ;
-                                |]
-                                SelectControlProps.OnChange (fun value -> setAttributes({| attributes with src = (generate (CorrectionLevel value)); correctionLevel = value |})) 
-                            ] [ ]
-                            RangeControl [ 
-                                RangeControlProps.Label "Size"; 
-                                RangeControlProps.Help "Set a custom size for the generated image";
-                                RangeControlProps.Min 2;
-                                RangeControlProps.Max 20;
-                                RangeControlProps.Value attributes.size
-                                RangeControlProps.OnChange (fun value -> setAttributes({| attributes with src = (generate (Size value)); size = value; |}))
-                                ] [ ]  
-                        ]
-                ]
-           
-            if editMode.current then 
-                Placeholder [ Instructions "Paste a link/text to generate a QR Code"; PlaceholderProps.Label "QR Code Generator"; IsColumnLayout true ]
-                    [ 
-                        div [ ]
-                            [
-                                TextControl [ 
-                                    TextControlProps.Value attributes.text; 
-                                    TextControlProps.OnChange (fun value -> props.setAttributes({| attributes with text = value; src = (generate (Code value));|}))
-                                    ] []
-                            ]
-                        
-                        div [ ]
-                            [
-                                div [ Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
-                                    [
-                                        img [ Src attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt attributes.text]
-                                    ]
-                            ]
-                        if not (isUndefined attributes.src) then
-                            div [  Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
+                            PanelBody [ Title (__ "Setting") ]
                                 [
-                                    Button [ IsPrimary true; OnClick (fun _ -> editMode.update(fun _ -> false)) ]
-                                        [str "Looks Good"]
+                                    TextControl [ 
+                                        TextControlProps.Label (__ "Text"); 
+                                        TextControlProps.Value attributes.text; 
+                                        TextControlProps.OnChange (fun value -> setAttributes({| attributes with text = value; src = (generate (Code value)) |}))
+                                        ] []
+                                    SelectControl [ 
+                                        SelectControlProps.Label (__ "Error Correction Level")
+                                        SelectControlProps.Help (__ "Raising this level improves error correction capability but also increases the amount of data")
+                                        SelectControlProps.Value attributes.correctionLevel
+                                        SelectControlProps.Options [| 
+                                            {| label = (__ "L (7%)") ; value = "L"|} ;
+                                            {| label = (__ "M (15%)"); value = "M"|} ;
+                                            {| label = (__ "Q (25%)"); value = "Q"|} ;
+                                            {| label = (__ "H (30%)"); value = "H"|} ;
+                                        |]
+                                        SelectControlProps.OnChange (fun value -> setAttributes({| attributes with src = (generate (CorrectionLevel value)); correctionLevel = value |})) 
+                                    ] [ ]
+                                    RangeControl [ 
+                                        RangeControlProps.Label (__ "Size"); 
+                                        RangeControlProps.Help (__ "Set a custom size for the generated image");
+                                        RangeControlProps.Min 2;
+                                        RangeControlProps.Max 20;
+                                        RangeControlProps.Value attributes.size
+                                        RangeControlProps.OnChange (fun value -> setAttributes({| attributes with src = (generate (Size value)); size = value; |}))
+                                        ] [ ]  
                                 ]
+                        ]
                    
-                  
-                    ]
-            else 
-                div [ Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
-                    [
-                        img [ Src attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt attributes.text]
-                    ]
-        ]
+                    if editMode.current then 
+                        Placeholder [ Instructions (__ "Paste a link/text to generate a QR Code"); PlaceholderProps.Label (__ "QR Code Generator"); IsColumnLayout true ]
+                            [ 
+                                div [ ]
+                                    [
+                                        TextControl [ 
+                                            TextControlProps.Value attributes.text; 
+                                            TextControlProps.OnChange (fun value -> props.setAttributes({| attributes with text = value; src = (generate (Code value));|}))
+                                            ] []
+                                    ]
+                                
+                                div [ ]
+                                    [
+                                        div [ Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
+                                            [
+                                                img [ Src attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt attributes.text]
+                                            ]
+                                    ]
+                                if not (isUndefined attributes.src) then
+                                    div [  Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
+                                        [
+                                            Button [ IsPrimary true; OnClick (fun _ -> editMode.update(fun _ -> false)) ]
+                                                [str (__ "Looks Good")]
+                                        ]
+                           
+                          
+                            ]
+                    else 
+                        div [ Style [ Display DisplayOptions.Flex; JustifyContent "center"; ] ]
+                            [
+                                img [ Src attributes.src; Style [ Width "max-content"; Height  "max-content" ]; Alt attributes.text]
+                            ]
+                ]
     
     ), memoizeWith = equalsButFunctions)
