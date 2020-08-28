@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       QR Code Generator
+ * Plugin Name:       Simple QR Code Generator Block
  * Plugin URI:        https://github.com/Soare-Robert-Daniel/QR-Code-Generator-Block
  * Description:       It generate a QR Code based on a giving text.
  * Version:           1.1.0
@@ -51,7 +51,7 @@ function create_block_testing_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'soare-robert/qr-code-generator', array(
+	register_block_type( 'soare-robert/qr-code-generator-simple-block', array(
 		'editor_script' => 'create-block-testing-block-editor',
 		'editor_style'  => 'create-block-testing-block-editor',
 		'style'         => 'create-block-testing-block',

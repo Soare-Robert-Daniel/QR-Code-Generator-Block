@@ -1,4 +1,4 @@
-=== QR Code Generator ===
+=== Simple QR Code Generator Block ===
 Contributors: soarerobertdaniel17
 Tags:              block, qrcode, generator
 Requires at least: 5.5.5
