@@ -1,8 +1,8 @@
 {
-	"name": "soare-robert/qr-code-generator-simple-block",
+	"name": "soare-robert/simple-qr-code-generator-block",
 	"title": "QR Block Generator",
 	"category": "widgets",
-	"icon": "smiley",
+	"icon": "format-image",
 	"description": "A simple QR Code Generator.",
 	"textdomain": "soare-robert",
 	"supports": {

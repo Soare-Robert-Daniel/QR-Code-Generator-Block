@@ -1,8 +1,8 @@
 {
-	"name": "testing",
-	"version": "0.1.0",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
-	"author": "The WordPress Contributors",
+	"name": "simple-qr-code-generator",
+	"version": "1.1.2",
+	"description": "It generate a QR Code based on a giving text..",
+	"author": "soarerobert17",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
